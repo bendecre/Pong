@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://6jgel7024d5x"]
+
+[ext_resource type="Script" path="res://Game.gd" id="1_it5co"]
+[ext_resource type="PackedScene" uid="uid://csi1vu3iwho4w" path="res://player.tscn" id="1_y3rbv"]
+[ext_resource type="PackedScene" uid="uid://ca31tos480cph" path="res://ball.tscn" id="2_fl0rb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tc74n"]
+size = Vector2(1130.79, 49.8493)
+
+[sub_resource type="SystemFont" id="SystemFont_cdvku"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(5, -12)
+script = ExtResource("1_it5co")
+
+[node name="Top" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+position = Vector2(570, 9)
+shape = SubResource("RectangleShape2D_tc74n")
+
+[node name="Bottom" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+position = Vector2(570, 652)
+shape = SubResource("RectangleShape2D_tc74n")
+
+[node name="left" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left"]
+position = Vector2(-22, 510)
+rotation = -1.57111
+shape = SubResource("RectangleShape2D_tc74n")
+
+[node name="Right" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+position = Vector2(1162, 512)
+rotation = -1.57111
+shape = SubResource("RectangleShape2D_tc74n")
+
+[node name="Player" parent="." instance=ExtResource("1_y3rbv")]
+position = Vector2(59, 308)
+
+[node name="Player2" parent="." instance=ExtResource("1_y3rbv")]
+position = Vector2(1083, 308)
+side = "p2"
+
+[node name="Ball" parent="." instance=ExtResource("2_fl0rb")]
+position = Vector2(573, 311)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 296.0
+offset_top = 58.0
+offset_right = 339.0
+offset_bottom = 81.0
+scale = Vector2(4.12405, 3.10443)
+theme_override_fonts/font = SubResource("SystemFont_cdvku")
+text = "0"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 845.0
+offset_top = 55.0
+offset_right = 888.0
+offset_bottom = 78.0
+scale = Vector2(4.12405, 3.10443)
+theme_override_fonts/font = SubResource("SystemFont_cdvku")
+text = "0"
+
+[connection signal="body_entered" from="Top" to="." method="_on_top_body_entered"]
+[connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]
+[connection signal="body_entered" from="left" to="." method="_on_left_body_entered"]
+[connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]

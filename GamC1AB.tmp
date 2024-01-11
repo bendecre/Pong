@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://6jgel7024d5x"]
+
+[ext_resource type="PackedScene" uid="uid://csi1vu3iwho4w" path="res://player.tscn" id="1_y3rbv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tc74n"]
+size = Vector2(1130.79, 67.6987)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Top" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+position = Vector2(573, -15.5)
+shape = SubResource("RectangleShape2D_tc74n")
+
+[node name="Bottom" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+position = Vector2(577, 648)
+shape = SubResource("RectangleShape2D_tc74n")
+
+[node name="left" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left"]
+position = Vector2(-22, 510)
+rotation = -1.57111
+shape = SubResource("RectangleShape2D_tc74n")
+
+[node name="Right" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+position = Vector2(1162, 512)
+rotation = -1.57111
+shape = SubResource("RectangleShape2D_tc74n")
+
+[node name="Player" parent="." instance=ExtResource("1_y3rbv")]
+side = null
